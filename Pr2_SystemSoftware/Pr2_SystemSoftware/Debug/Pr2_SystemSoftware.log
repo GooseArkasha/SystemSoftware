@@ -1,0 +1,4 @@
+﻿  WinMain.cpp
+D:\MyProjects\SystemSoftware\Pr2_SystemSoftware\Pr2_SystemSoftware\WinMain.cpp(350,19): warning C4101: cEndString: неиспользованная локальная переменная
+D:\MyProjects\SystemSoftware\Pr2_SystemSoftware\Pr2_SystemSoftware\WinMain.cpp(349,22): warning C4101: wEndString: неиспользованная локальная переменная
+  Pr2_SystemSoftware.vcxproj -> D:\MyProjects\SystemSoftware\Pr2_SystemSoftware\Debug\Pr2_SystemSoftware.exe
