@@ -1,0 +1,4 @@
+﻿  WinMain.cpp
+D:\MyProjects\SystemSoftware\Pr3_SystemSoftware\Pr3_SystemSoftware\WinMain.cpp(151,9): warning C4101: hdc: неиспользованная локальная переменная
+D:\MyProjects\SystemSoftware\Pr3_SystemSoftware\Pr3_SystemSoftware\WinMain.cpp(150,17): warning C4101: ps: неиспользованная локальная переменная
+  Pr3_SystemSoftware.vcxproj -> D:\MyProjects\SystemSoftware\Pr3_SystemSoftware\Debug\Pr3_SystemSoftware.exe
