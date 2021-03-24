@@ -415,127 +415,82 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             break;
         }
         break;
+     
+    case WM_KEYDOWN:
 
-        case WM_KEYDOWN: {
-            switch (wParam)
-            {
-            case VK_CONTROL:
+        switch (wParam) {
 
-                bControlFlag = true;
-                MessageBox(NULL,
-                    _T("CTRL down"),
-                    _T("MSG"),
-                    NULL);
+        case 0x31:      //клавиша 1
 
-                break;
+            if (bControlFlag) {
 
-            default:
-                break;
+                DeleteObject(brush);
+                brush = CreateSolidBrush(RGB(0, 255, 0));
+
+                SetClassLongPtr(hWndFirstChild, GCL_HBRBACKGROUND, (LONG)brush);
+                InvalidateRect(hWndFirstChild, NULL, TRUE);
+            }
+            break;
+
+        case 0x32:      //клавиша 2
+
+            if (bControlFlag) {
+
+                DeleteObject(brush);
+                brush = CreateSolidBrush(RGB(255, 0, 0));
+
+                SetClassLongPtr(hWndSecondChild, GCL_HBRBACKGROUND, (LONG)brush);
+                InvalidateRect(hWndSecondChild, NULL, TRUE);
+
             }
 
             break;
-        }
 
-        case WM_KEYUP: {
-            switch (wParam)
-            {
-            case VK_CONTROL:
+        case 0x33:      //клавиша 3
 
-                bControlFlag = false;
+            if (bControlFlag) {
 
-                MessageBox(NULL,
-                    _T("CTRL up"),
-                    _T("MSG"),
-                    NULL);
+                DeleteObject(brush);
+                brush = CreateSolidBrush(RGB(0, 0, 255));
 
-                break;
-
-            default:
-                break;
+                SetClassLongPtr(hWndThirdChild, GCL_HBRBACKGROUND, (LONG)brush);
+                InvalidateRect(hWndThirdChild, NULL, TRUE);
             }
 
             break;
-        }
 
-        case WM_CHAR: {
+        case 0x34:      //клавиша 4
 
-            switch (wParam)
-            {
-            case 0x31:      //клавиша 1
+            if (bControlFlag) {
 
-                if (bControlFlag) {
-                    //MessageBox(NULL,
-                    //    _T("CTRL + 1"),
-                    //    _T("MSG"),
-                    //    NULL);
+                DeleteObject(brush);
+                brush = CreateSolidBrush(RGB(255, 255, 0));
 
-                    DeleteObject(brush);
-                    brush = CreateSolidBrush(RGB(0, 255, 0));
-
-                    SetClassLongPtr(hWndFirstChild, GCL_HBRBACKGROUND, (LONG)brush);
-                    InvalidateRect(hWndFirstChild, NULL, TRUE);
-                }
-                
-                break;
-
-            case 0x32:      //клавиша 2
-
-                if (bControlFlag) {
-                    //MessageBox(NULL,
-                    //    _T("CTRL + 2"),
-                    //    _T("MSG"),
-                    //    NULL);
-
-                    DeleteObject(brush);
-                    brush = CreateSolidBrush(RGB(255, 0, 0));
-
-                    SetClassLongPtr(hWndSecondChild, GCL_HBRBACKGROUND, (LONG)brush);
-                    InvalidateRect(hWndSecondChild, NULL, TRUE);
-
-                }
-
-                break;
-
-            case 0x33:      //клавиша 3
-
-                if (bControlFlag) {
- /*                   MessageBox(NULL,
-                        _T("CTRL + 3"),
-                        _T("MSG"),
-                        NULL);*/
-                    DeleteObject(brush);
-                    brush = CreateSolidBrush(RGB(0, 0, 255));
-
-                    SetClassLongPtr(hWndThirdChild, GCL_HBRBACKGROUND, (LONG)brush);
-                    InvalidateRect(hWndThirdChild, NULL, TRUE);
-                }
-
-                break;
-
-            case 0x34:      //клавиша 4
-
-                if (bControlFlag) {
-                    //MessageBox(NULL,
-                    //    _T("CTRL + 4"),
-                    //    _T("MSG"),
-                    //    NULL);
-                    DeleteObject(brush);
-                    brush = CreateSolidBrush(RGB(255, 255, 0));
-
-                    SetClassLongPtr(hWndFourthChild, GCL_HBRBACKGROUND, (LONG)brush);
-                    InvalidateRect(hWndFourthChild, NULL, TRUE);
-                }
-
-                break;
-
-            default:
-                break;
+                SetClassLongPtr(hWndFourthChild, GCL_HBRBACKGROUND, (LONG)brush);
+                InvalidateRect(hWndFourthChild, NULL, TRUE);
             }
 
             break;
+        case VK_CONTROL:
+            bControlFlag = true;
+            break;
+        default:
+            break;
         }
 
+        break;
+       
+    case WM_KEYUP: 
+        if (wParam == VK_CONTROL) {
+        bControlFlag = false;
+        MessageBox(NULL,
+            _T("CTRL down"),
+            _T("MSG"),
+            NULL);
+        }
+        break;
 
+    
 
     case WM_DESTROY:
         PostQuitMessage(0);
